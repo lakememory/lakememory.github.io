@@ -41,6 +41,12 @@
         .side-menu .logo {
             font-size: 1.5rem;
             font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .side-menu .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
             margin-bottom: 40px;
         }
         
@@ -191,6 +197,39 @@
         
         .btn:hover {
             opacity: 0.8;
+        }
+        
+        .streaming-links {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .streaming-links h4 {
+            margin: 0;
+            margin-right: 10px;
+            font-size: 0.85rem;
+            font-weight: normal;
+            opacity: 0.8;
+        }
+        
+        .streaming-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: opacity 0.3s, transform 0.2s;
+        }
+        
+        .streaming-link:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
         }
         
         /* Resume section styles */
@@ -347,72 +386,59 @@
             .item-date {
                 margin-top: 5px;
             }
+            
+            .streaming-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .streaming-links h4 {
+                margin-bottom: 5px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="side-menu">
-        <div class="logo">The Range</div>
+        <div class="logo">James Hinton</div>
+        <div class="subtitle">The Range</div>
         <ul class="menu-items">
-            <li><a href="#home" class="active" onclick="showSection('home')">Home</a></li>
             <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
-            <li><a href="#resume" onclick="showSection('resume')">Resume</a></li>
-            <li><a href="#about" onclick="showSection('about')">About</a></li>
+            <li><a href="#resume" class="active" onclick="showSection('resume')">Resume</a></li>
             <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
         </ul>
-        <div class="social-links">
-            <a href="https://youtube.com" target="_blank">YouTube</a>
-            <a href="https://spotify.com" target="_blank">Spotify</a>
-            <a href="https://music.apple.com" target="_blank">Apple Music</a>
-        </div>
+        <!-- Social links moved to The Range project card -->
     </div>
     
     <div class="main-content">
-        <!-- Home Section -->
-        <section id="home-section" class="section active">
-            <div class="hero">
-                <div class="hero-content">
-                    <h1>James Hinton</h1>
-                    <p>Electronic music artist (The Range) and creative technologist exploring the intersection of music, technology, and human experience.</p>
-                </div>
-            </div>
+        <!-- Home Section (removed) -->
             
-            <div class="featured-work">
-                <h2 class="section-title">Featured Work</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
-                        <div class="project-info">
-                            <h3>Google DeepMind Music AI Collaboration</h3>
-                            <p>Created an innovative musical piece in collaboration with Google's DeepMind Music AI.</p>
-                            <div class="project-tags">
-                                <span class="tag">AI</span>
-                                <span class="tag">Music</span>
-                            </div>
-                            <a href="#projects" class="btn" onclick="showSection('projects')">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
-                        <div class="project-info">
-                            <h3>"Potential" Album</h3>
-                            <p>Album featuring vocals exclusively sampled from unknown YouTube artists.</p>
-                            <div class="project-tags">
-                                <span class="tag">Music</span>
-                                <span class="tag">Sampling</span>
-                            </div>
-                            <a href="https://www.youtube.com/watch?v=2YiX6uQEdUw" class="btn" target="_blank">Listen</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- End of removed Home Section -->
         
         <!-- Projects Section -->
         <section id="projects-section" class="section">
             <h2 class="section-title">Projects</h2>
+            
             <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                    <div class="project-info">
+                        <h3>The Range</h3>
+                        <p>Electronic music project exploring the intersection of technology and human connection, with releases on Domino Recordings including "Potential" (2016) and "Mercury" (2022).</p>
+                        <div class="project-tags">
+                            <span class="tag">Music</span>
+                            <span class="tag">Electronic</span>
+                            <span class="tag">Performance</span>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=2YiX6uQEdUw" class="btn" target="_blank">Listen to Latest</a>
+                        <div class="streaming-links">
+                            <h4>Stream on:</h4>
+                            <a href="https://www.youtube.com/c/therangemusic" class="streaming-link" target="_blank">YouTube</a>
+                            <a href="https://open.spotify.com/artist/5xsSdtWHooM9IL5WnDWTdD?si=9ayGgf2QTCyYal8XPHgrcg" class="streaming-link" target="_blank">Spotify</a>
+                            <a href="https://music.apple.com/us/artist/the-range/3651783" class="streaming-link" target="_blank">Apple Music</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-card">
                     <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
                     <div class="project-info">
@@ -473,7 +499,7 @@
         </section>
         
         <!-- Resume Section -->
-        <section id="resume-section" class="section">
+        <section id="resume-section" class="section active">
             <h2 class="section-title">Resume</h2>
             
             <div class="resume-section">
@@ -604,20 +630,7 @@
             </div>
         </section>
         
-        <!-- About Section -->
-        <section id="about-section" class="section">
-            <h2 class="section-title">About</h2>
-            
-            <div class="about-content">
-                <div class="about-image" style="background-image: url('/api/placeholder/400/400');"></div>
-                <div>
-                    <p>I'm James Hinton, an electronic music artist (performing as The Range) and creative technologist with a background in physics. My work explores the intersection of music, technology, and human connection.</p>
-                    <p>With a career spanning over a decade in electronic music production, I've released four albums, including two on Domino Recordings, toured globally, and accumulated over 10 million streams across platforms.</p>
-                    <p>Alongside my music career, I've worked in diverse fields including value investing as a Co-CIO at Young Orchard and co-founded Glover Hinton, a creative agency specializing in multidisciplinary projects. I'm currently developing Auteur, an LLM-based generative music application for municipalities.</p>
-                    <p>My approach to creativity involves recombining existing ideas in unexpected ways and immersing myself in unfamiliar contexts to gain new perspectives. I'm passionate about creating experiences that help people understand complex systems and express themselves in new ways.</p>
-                </div>
-            </div>
-        </section>
+        <!-- About Section Removed -->
         
         <!-- Contact Section -->
         <section id="contact-section" class="section">
@@ -658,9 +671,9 @@
             }
         }
         
-        // Initialize the page with the home section visible
+        // Initialize the page with the resume section visible
         document.addEventListener('DOMContentLoaded', function() {
-            showSection('home');
+            showSection('resume');
         });
     </script>
 </body>
