@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Hinton | Resume</title>
+    <title>James Hinton | The Range</title>
     <style>
         :root {
-            --primary-color: #2D2D2D;
-            --secondary-color: #4A6FE3;
-            --background-color: #FFFFFF;
-            --text-color: #333333;
-            --light-gray: #F5F5F5;
-            --border-color: #E0E0E0;
+            --primary-color: #1a1a1a; /* Deep matte black */
+            --background-color: #f0e9dc; /* Vellum beige */
+            --text-color: #1a1a1a;
+            --light-gray: #e8e0cf;
+            --border-color: #d8ceb9;
         }
         
         * {
@@ -25,50 +24,185 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--background-color);
-            padding: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .resume-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .resume-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .resume-header p {
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-        }
-        
-        .contact-info {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1rem 0;
+            min-height: 100vh;
         }
         
-        .contact-item {
-            display: flex;
-            align-items: center;
+        /* Side menu styles */
+        .side-menu {
+            width: 250px;
+            background-color: var(--background-color);
+            padding: 40px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .side-menu .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        
+        .menu-items {
+            list-style-type: none;
+        }
+        
+        .menu-items li {
+            margin-bottom: 15px;
+        }
+        
+        .menu-items a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .menu-items a:hover, .menu-items a.active {
+            opacity: 0.7;
+        }
+        
+        .social-links {
+            margin-top: 40px;
+        }
+        
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Main content styles */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 40px;
+            max-width: 1200px;
         }
         
         .section {
-            margin: 2.5rem 0;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .section.active {
+            display: block;
         }
         
         .section-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        /* Home section styles */
+        .hero {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Projects section styles */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        
+        .tag {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: opacity 0.3s;
+        }
+        
+        .btn:hover {
+            opacity: 0.8;
+        }
+        
+        /* Resume section styles */
+        .resume-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .resume-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
         
         .experience-item, .education-item, .project-item {
@@ -91,42 +225,25 @@
         .item-title {
             font-weight: bold;
             font-size: 1.2rem;
-            color: var(--primary-color);
         }
         
         .item-subtitle {
             font-style: italic;
-            color: var(--secondary-color);
+            opacity: 0.8;
         }
         
         .item-date {
-            color: #777;
+            color: #5a5346;
         }
         
-        .item-description {
-            margin-top: 0.5rem;
-        }
-        
-        .item-description ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-        
-        .item-description li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .skills {
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
+            gap: 20px;
         }
         
         .skill-category h3 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
         }
         
         .skill-list {
@@ -134,250 +251,417 @@
         }
         
         .skill-list li {
-            margin-bottom: 0.3rem;
+            margin-bottom: 5px;
             position: relative;
-            padding-left: 1rem;
+            padding-left: 15px;
         }
         
         .skill-list li::before {
             content: "•";
-            color: var(--secondary-color);
             position: absolute;
             left: 0;
         }
         
-        .back-link {
-            margin-top: 2rem;
+        /* About section styles */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .about-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+        
+        /* Contact section styles */
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer styles */
+        footer {
+            margin-top: 3rem;
             text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
         
-        .back-link a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-        
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-        
-        .print-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .print-btn:hover {
-            background-color: #3a5bc0;
-        }
-        
-        @media print {
-            body {
-                padding: 0;
-                font-size: 12pt;
+        /* Responsive styles */
+        @media (max-width: 900px) {
+            .side-menu {
+                width: 200px;
             }
             
-            .print-btn, .back-link {
-                display: none;
+            .main-content {
+                margin-left: 200px;
             }
             
-            .section {
-                page-break-inside: avoid;
-                margin: 1.5rem 0;
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                max-width: 300px;
+                margin: 0 auto;
             }
         }
         
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .side-menu {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px;
+            }
+            
+            .side-menu .logo {
+                margin-bottom: 20px;
+            }
+            
+            .menu-items {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            
+            .menu-items li {
+                margin-right: 20px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
             .item-header {
                 flex-direction: column;
             }
             
             .item-date {
-                margin-top: 0.25rem;
+                margin-top: 5px;
             }
         }
     </style>
 </head>
 <body>
-    <button class="print-btn" onclick="window.print()">Print Resume</button>
-    
-    <div class="resume-header">
-        <h1>James Hinton</h1>
-        <p>Musician & Creative Technologist</p>
-        <div class="contact-info">
-            <span class="contact-item">Contact information available upon request</span>
+    <div class="side-menu">
+        <div class="logo">The Range</div>
+        <ul class="menu-items">
+            <li><a href="#home" class="active" onclick="showSection('home')">Home</a></li>
+            <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
+            <li><a href="#resume" onclick="showSection('resume')">Resume</a></li>
+            <li><a href="#about" onclick="showSection('about')">About</a></li>
+            <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+        <div class="social-links">
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+            <a href="https://spotify.com" target="_blank">Spotify</a>
+            <a href="https://music.apple.com" target="_blank">Apple Music</a>
         </div>
     </div>
     
-    <section class="section">
-        <h2 class="section-title">Professional Experience</h2>
-        
-        <div class="experience-item">
-            <div class="item-header">
-                <span class="item-title">Partner & Co-founder</span>
-                <span class="item-date">Summer 2024 - Present</span>
-            </div>
-            <div class="item-subtitle">Glover Hinton, NYC</div>
-            <div class="item-description">
-                <p>Co-founded a boutique creative agency specializing in multidisciplinary projects requiring rapid execution across music, design, and technology.</p>
-                <ul>
-                    <li>Lead technical development using Python, machine learning, and data analysis</li>
-                    <li>Collaborate on projects requiring rapid execution across disciplines (music, design, technology)</li>
-                    <li>Provide AI expertise for creative applications and solutions</li>
-                    <li>Work with clients who require nimble teams that can navigate complex problems where larger teams would be inefficient</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="experience-item">
-            <div class="item-header">
-                <span class="item-title">Composer & Technologist</span>
-                <span class="item-date">January 2025 - Present</span>
-            </div>
-            <div class="item-subtitle">Auteur</div>
-            <div class="item-description">
-                <p>Developing an LLM-based generative music application for municipalities.</p>
-                <ul>
-                    <li>Creating generative music solutions with integrated reporting capabilities</li>
-                    <li>Building Python codebase that drives the generative components of the platform</li>
-                    <li>Combining musical expertise with technical implementation</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="experience-item">
-            <div class="item-header">
-                <span class="item-title">Co-CIO</span>
-                <span class="item-date">2018 - 2023</span>
-            </div>
-            <div class="item-subtitle">Young Orchard</div>
-            <div class="item-description">
-                <ul>
-                    <li>Served as Co-Chief Investment Officer at a value investing partnership</li>
-                    <li>Helped achieve 136% returns over a five-year period</li>
-                    <li>Applied analytical skills to evaluate investment opportunities</li>
-                    <li>Partnership terminated amicably in 2023</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="experience-item">
-            <div class="item-header">
-                <span class="item-title">Electronic Music Artist</span>
-                <span class="item-date">2011 - Present</span>
-            </div>
-            <div class="item-subtitle">The Range</div>
-            <div class="item-description">
-                <ul>
-                    <li>Created and performed original electronic music globally</li>
-                    <li>Released four albums, including two on Domino Recordings (Potential, 2016; Mercury, 2022)</li>
-                    <li>Toured internationally as a performing artist</li>
-                    <li>Accumulated over 10 million streams across all platforms</li>
-                    <li>Collaborated with Google DeepMind on a published musical piece using their Music AI</li>
-                    <li>Subject of "Superimpose" documentary about innovative sampling techniques</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section">
-        <h2 class="section-title">Education</h2>
-        
-        <div class="education-item">
-            <div class="item-header">
-                <span class="item-title">Bachelor of Science in Physics</span>
-                <span class="item-date">2010</span>
-            </div>
-            <div class="item-subtitle">Brown University</div>
-        </div>
-    </section>
-    
-    <section class="section">
-        <h2 class="section-title">Notable Projects</h2>
-        
-        <div class="project-item">
-            <div class="item-header">
-                <span class="item-title">Google DeepMind Music AI Collaboration</span>
-                <span class="item-date">Recent</span>
-            </div>
-            <div class="item-description">
-                <p>Collaborated with Google DeepMind to create a musical piece using their new Music AI technology, published on the DeepMind blog.</p>
-            </div>
-        </div>
-        
-        <div class="project-item">
-            <div class="item-header">
-                <span class="item-title">Twitter Lobby Installation</span>
-                <span class="item-date">2017</span>
-            </div>
-            <div class="item-description">
-                <p>Created a real-time audio-visual installation for Twitter's lobby that transformed the platform's global activity from their firehose API into an immersive experience.</p>
-            </div>
-        </div>
-        
-        <div class="project-item">
-            <div class="item-header">
-                <span class="item-title">"Potential" Album & "Superimpose" Documentary</span>
-                <span class="item-date">2016</span>
-            </div>
-            <div class="item-description">
-                <p>Released an album that exclusively sampled unknown YouTube artists, leading to a documentary exploring the innovative approach to digital collaboration and connection.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section">
-        <h2 class="section-title">Skills</h2>
-        
-        <div class="skills">
-            <div class="skill-category">
-                <h3>Music Production</h3>
-                <ul class="skill-list">
-                    <li>Electronic music composition</li>
-                    <li>Generative music</li>
-                    <li>Sound design</li>
-                    <li>Sample-based production</li>
-                </ul>
+    <div class="main-content">
+        <!-- Home Section -->
+        <section id="home-section" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>James Hinton</h1>
+                    <p>Electronic music artist (The Range) and creative technologist exploring the intersection of music, technology, and human experience.</p>
+                </div>
             </div>
             
-            <div class="skill-category">
-                <h3>Development</h3>
-                <ul class="skill-list">
-                    <li>Python</li>
-                    <li>Machine learning</li>
-                    <li>Data analysis</li>
-                    <li>Generative algorithms</li>
-                </ul>
+            <div class="featured-work">
+                <h2 class="section-title">Featured Work</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                        <div class="project-info">
+                            <h3>Google DeepMind Music AI Collaboration</h3>
+                            <p>Created an innovative musical piece in collaboration with Google's DeepMind Music AI.</p>
+                            <div class="project-tags">
+                                <span class="tag">AI</span>
+                                <span class="tag">Music</span>
+                            </div>
+                            <a href="#projects" class="btn" onclick="showSection('projects')">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                        <div class="project-info">
+                            <h3>"Potential" Album</h3>
+                            <p>Album featuring vocals exclusively sampled from unknown YouTube artists.</p>
+                            <div class="project-tags">
+                                <span class="tag">Music</span>
+                                <span class="tag">Sampling</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=2YiX6uQEdUw" class="btn" target="_blank">Listen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects-section" class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                    <div class="project-info">
+                        <h3>Google DeepMind Music AI Collaboration</h3>
+                        <p>Collaborated with Google DeepMind to create innovative music using their cutting-edge Music AI technology.</p>
+                        <div class="project-tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">Music</span>
+                            <span class="tag">Collaboration</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                    <div class="project-info">
+                        <h3>Twitter Lobby Installation (2017)</h3>
+                        <p>Created an immersive audio-visual installation for Twitter's lobby that transformed real-time global tweet data into a dynamic sensory experience.</p>
+                        <div class="project-tags">
+                            <span class="tag">Data Visualization</span>
+                            <span class="tag">Installation</span>
+                            <span class="tag">Generative Art</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                    <div class="project-info">
+                        <h3>Auteur - LLM-based Generative Music</h3>
+                        <p>Developing an innovative application that leverages LLMs to create generative music experiences for municipalities, combining technical expertise with musical composition.</p>
+                        <div class="project-tags">
+                            <span class="tag">LLM</span>
+                            <span class="tag">Generative Music</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                    <div class="project-info">
+                        <h3>"Potential" - Album & Superimpose Documentary</h3>
+                        <p>Created an album exclusively sampling unknown YouTube artists, leading to a documentary exploring digital connection and creative collaboration.</p>
+                        <div class="project-tags">
+                            <span class="tag">Music</span>
+                            <span class="tag">Documentary</span>
+                            <span class="tag">Digital Culture</span>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=vnyseI9lwDw" class="btn" target="_blank">Watch Documentary</a>
+                        <a href="https://www.youtube.com/watch?v=2YiX6uQEdUw" class="btn" target="_blank">Listen to Album</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Resume Section -->
+        <section id="resume-section" class="section">
+            <h2 class="section-title">Resume</h2>
+            
+            <div class="resume-section">
+                <h2>Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <span class="item-title">Partner & Co-founder</span>
+                        <span class="item-date">Summer 2024 - Present</span>
+                    </div>
+                    <div class="item-subtitle">Glover Hinton, NYC</div>
+                    <div class="item-description">
+                        <p>Co-founded a boutique creative agency specializing in multidisciplinary projects requiring rapid execution across music, design, and technology.</p>
+                        <ul>
+                            <li>Lead technical development using Python, machine learning, and data analysis</li>
+                            <li>Collaborate on projects requiring rapid execution across disciplines (music, design, technology)</li>
+                            <li>Provide AI expertise for creative applications and solutions</li>
+                            <li>Work with clients who require nimble teams that can navigate complex problems where larger teams would be inefficient</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <span class="item-title">Composer & Technologist</span>
+                        <span class="item-date">January 2025 - Present</span>
+                    </div>
+                    <div class="item-subtitle">Auteur</div>
+                    <div class="item-description">
+                        <p>Developing an LLM-based generative music application for municipalities.</p>
+                        <ul>
+                            <li>Creating generative music solutions with integrated reporting capabilities</li>
+                            <li>Building Python codebase that drives the generative components of the platform</li>
+                            <li>Combining musical expertise with technical implementation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <span class="item-title">Co-CIO</span>
+                        <span class="item-date">2018 - 2023</span>
+                    </div>
+                    <div class="item-subtitle">Young Orchard</div>
+                    <div class="item-description">
+                        <ul>
+                            <li>Served as Co-Chief Investment Officer at a value investing partnership</li>
+                            <li>Helped achieve 136% returns over a five-year period</li>
+                            <li>Applied analytical skills to evaluate investment opportunities</li>
+                            <li>Partnership terminated amicably in 2023</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <span class="item-title">Electronic Music Artist</span>
+                        <span class="item-date">2011 - Present</span>
+                    </div>
+                    <div class="item-subtitle">The Range</div>
+                    <div class="item-description">
+                        <ul>
+                            <li>Created and performed original electronic music globally</li>
+                            <li>Released four albums, including two on Domino Recordings (Potential, 2016; Mercury, 2022)</li>
+                            <li>Toured internationally as a performing artist</li>
+                            <li>Accumulated over 10 million streams across all platforms</li>
+                            <li>Collaborated with Google DeepMind on a published musical piece using their Music AI</li>
+                            <li>Subject of "Superimpose" documentary about innovative sampling techniques</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             
-            <div class="skill-category">
-                <h3>AI/ML</h3>
-                <ul class="skill-list">
-                    <li>LLMs</li>
-                    <li>Music AI</li>
-                    <li>Creative AI applications</li>
-                </ul>
+            <div class="resume-section">
+                <h2>Education</h2>
+                
+                <div class="education-item">
+                    <div class="item-header">
+                        <span class="item-title">Bachelor of Science in Physics</span>
+                        <span class="item-date">2010</span>
+                    </div>
+                    <div class="item-subtitle">Brown University</div>
+                </div>
             </div>
             
-            <div class="skill-category">
-                <h3>Creative Technology</h3>
-                <ul class="skill-list">
-                    <li>Audio-visual installations</li>
-                    <li>Real-time data visualization</li>
-                    <li>Interactive media</li>
-                </ul>
+            <div class="resume-section">
+                <h2>Skills</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Music Production</h3>
+                        <ul class="skill-list">
+                            <li>Electronic music composition</li>
+                            <li>Generative music</li>
+                            <li>Sound design</li>
+                            <li>Sample-based production</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Development</h3>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>Machine learning</li>
+                            <li>Data analysis</li>
+                            <li>Generative algorithms</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>AI/ML</h3>
+                        <ul class="skill-list">
+                            <li>LLMs</li>
+                            <li>Music AI</li>
+                            <li>Creative AI applications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Creative Technology</h3>
+                        <ul class="skill-list">
+                            <li>Audio-visual installations</li>
+                            <li>Real-time data visualization</li>
+                            <li>Interactive media</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <div class="back-link">
-        <a href="index.html">← Back to Portfolio</a>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about-section" class="section">
+            <h2 class="section-title">About</h2>
+            
+            <div class="about-content">
+                <div class="about-image" style="background-image: url('/api/placeholder/400/400');"></div>
+                <div>
+                    <p>I'm James Hinton, an electronic music artist (performing as The Range) and creative technologist with a background in physics. My work explores the intersection of music, technology, and human connection.</p>
+                    <p>With a career spanning over a decade in electronic music production, I've released four albums, including two on Domino Recordings, toured globally, and accumulated over 10 million streams across platforms.</p>
+                    <p>Alongside my music career, I've worked in diverse fields including value investing as a Co-CIO at Young Orchard and co-founded Glover Hinton, a creative agency specializing in multidisciplinary projects. I'm currently developing Auteur, an LLM-based generative music application for municipalities.</p>
+                    <p>My approach to creativity involves recombining existing ideas in unexpected ways and immersing myself in unfamiliar contexts to gain new perspectives. I'm passionate about creating experiences that help people understand complex systems and express themselves in new ways.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact-section" class="section">
+            <h2 class="section-title">Contact</h2>
+            
+            <div class="contact-info">
+                <p>Contact information available upon request</p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2025 James Hinton. All rights reserved.</p>
+        </footer>
     </div>
+    
+    <script>
+        // Function to show the selected section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            document.getElementById(sectionId + '-section').classList.add('active');
+            
+            // Update active menu item
+            const menuItems = document.querySelectorAll('.menu-items a');
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`.menu-items a[href="#${sectionId}"]`).classList.add('active');
+            
+            // Scroll to top on mobile
+            if (window.innerWidth <= 768) {
+                window.scrollTo(0, 0);
+            }
+        }
+        
+        // Initialize the page with the home section visible
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
+    </script>
 </body>
 </html>
