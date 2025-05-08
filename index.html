@@ -1,1 +1,418 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Hinton | Musician & Creative Technologist</title>
+    <style>
+        :root {
+            --primary-color: #2D2D2D;
+            --secondary-color: #4A6FE3;
+            --background-color: #FFFFFF;
+            --text-color: #333333;
+            --accent-color: #E34A6F;
+            --light-gray: #F5F5F5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .hero {
+            background-color: var(--light-gray);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--primary-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-weight: 400;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .project-card {
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0.5rem 0;
+        }
+        
+        .tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3a5bc0;
+        }
+        
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin: 3rem 0;
+            align-items: center;
+        }
+        
+        .about-image {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            margin: 0 auto;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .skills {
+            margin: 3rem 0;
+        }
+        
+        .skill-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-list li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>James Hinton</h1>
+            <p>Musician & Creative Technologist</p>
+            <nav>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="resume.html">Resume</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>Exploring the intersection of music, technology, and human experience through innovative projects and creative problem-solving.</h2>
+        </div>
+    </section>
+    
+    <section id="projects" class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        
+        <div class="projects">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                <div class="project-info">
+                    <h3>Google DeepMind Music AI Collaboration</h3>
+                    <p>Collaborated with Google DeepMind to create innovative music using their cutting-edge Music AI technology.</p>
+                    <div class="project-tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">Music</span>
+                        <span class="tag">Collaboration</span>
+                    </div>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                <div class="project-info">
+                    <h3>Twitter Lobby Installation (2017)</h3>
+                    <p>Created an immersive audio-visual installation for Twitter's lobby that transformed real-time global tweet data into a dynamic sensory experience.</p>
+                    <div class="project-tags">
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">Installation</span>
+                        <span class="tag">Generative Art</span>
+                    </div>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                <div class="project-info">
+                    <h3>Auteur - LLM-based Generative Music</h3>
+                    <p>Developing an innovative application that leverages LLMs to create generative music experiences for municipalities, combining technical expertise with musical composition.</p>
+                    <div class="project-tags">
+                        <span class="tag">LLM</span>
+                        <span class="tag">Generative Music</span>
+                        <span class="tag">Python</span>
+                    </div>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('/api/placeholder/400/320');"></div>
+                <div class="project-info">
+                    <h3>"Potential" - Album & Superimpose Documentary</h3>
+                    <p>Created an album exclusively sampling unknown YouTube artists, leading to a documentary exploring digital connection and creative collaboration.</p>
+                    <div class="project-tags">
+                        <span class="tag">Music</span>
+                        <span class="tag">Documentary</span>
+                        <span class="tag">Digital Culture</span>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=vnyseI9lwDw" class="btn">Watch Documentary</a>
+                    <a href="https://www.youtube.com/watch?v=2YiX6uQEdUw" class="btn">Listen to Album</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        
+        <div class="about">
+            <div class="about-image" style="background-image: url('/api/placeholder/400/400');"></div>
+            <div>
+                <p>I'm James Hinton, an electronic music artist (performing as The Range) and creative technologist with a background in physics. My work explores the intersection of music, technology, and human connection.</p>
+                <p>With a career spanning over a decade in electronic music production, I've released four albums, including two on Domino Recordings, toured globally, and accumulated over 10 million streams across platforms.</p>
+                <p>Alongside my music career, I've worked in diverse fields including value investing as a Co-CIO at Young Orchard and co-founded Glover Hinton, a creative agency specializing in multidisciplinary projects. I'm currently developing Auteur, an LLM-based generative music application for municipalities.</p>
+                <p>My approach to creativity involves recombining existing ideas in unexpected ways and immersing myself in unfamiliar contexts to gain new perspectives. I'm passionate about creating experiences that help people understand complex systems and express themselves in new ways.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
+        
+        <div class="skill-categories">
+            <div class="skill-category">
+                <h3>Music Production</h3>
+                <ul class="skill-list">
+                    <li>Electronic music composition</li>
+                    <li>Generative music</li>
+                    <li>Sound design</li>
+                    <li>Sample-based production</li>
+                    <li>Music AI collaboration</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Development</h3>
+                <ul class="skill-list">
+                    <li>Python</li>
+                    <li>Machine learning</li>
+                    <li>Data analysis</li>
+                    <li>Generative algorithms</li>
+                    <li>Audio processing</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>AI/ML</h3>
+                <ul class="skill-list">
+                    <li>Large Language Models (LLMs)</li>
+                    <li>Music AI</li>
+                    <li>Creative applications of AI</li>
+                    <li>Human-AI collaboration</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Creative Technology</h3>
+                <ul class="skill-list">
+                    <li>Audio-visual installations</li>
+                    <li>Real-time data visualization</li>
+                    <li>Interactive media</li>
+                    <li>Cross-disciplinary collaboration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="container">
+        <h2 class="section-title">Contact</h2>
+        
+        <div style="text-align: center;">
+            <p>Email: <a href="mailto:James.c.hinton@gmail.com">James.c.hinton@gmail.com</a></p>
+            <p>Phone: 570-269-5775</p>
+            
+            <div class="social-links">
+                <!-- Add your social media links here -->
+                <!-- Example: -->
+                <!-- <a href="#"><i class="fab fa-twitter"></i></a> -->
+                <!-- <a href="#"><i class="fab fa-linkedin"></i></a> -->
+                <!-- <a href="#"><i class="fab fa-github"></i></a> -->
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p class="copyright">© 2025 James Hinton. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
