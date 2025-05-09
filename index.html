@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>James Hinton</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="any">
     <style>
         :root {
             --primary-color: #1a1a1a; /* Deep matte black */
-            --background-color: #f0e9dc; /* Vellum beige */
+            --background-color: #F4F4F3; /* Light gray */
             --text-color: #333333;
             --light-gray: #e8e0cf;
             --border-color: #d8ceb9;
@@ -20,11 +22,11 @@
         }
         
         /* Global text size overrides */
-        body, h1, h2, h3, h4, h5, h6, p, span, a, div, li, td, th, label, input, 
-        button, textarea, select, option, blockquote, figcaption, 
-        .projects-table td, .resume-item-title, .resume-item-subtitle, 
+        body, h1, h2, h3, h4, h5, h6, p, span, a, div, li, td, th, label, input,
+        button, textarea, select, option, blockquote, figcaption,
+        .projects-table td, .resume-item-title, .resume-item-subtitle,
         .resume-item-date, .header-links {
-            font-size: 20px !important;
+            font-size: 18px !important;
         }
         
         body {
@@ -183,7 +185,14 @@
         
         .resume-item-date {
             display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .resume-item-description {
+            display: block;
             margin-bottom: 0.5rem;
+            font-style: normal;
+            color: rgba(51, 51, 51, 0.85);
         }
         
         /* Press items now use resume-item class for consistency */
@@ -211,11 +220,31 @@
             }
             
             .projects-table-container {
-                overflow-x: auto;
+                overflow-x: visible;
             }
-            
-            .projects-table {
-                min-width: 40rem;
+
+            .projects-table, .projects-table tbody, .projects-table tr {
+                display: block;
+                width: 100%;
+            }
+
+            .projects-table td {
+                display: block;
+                text-align: left !important;
+                padding: 0.5rem 0 !important;
+                width: 100%;
+            }
+
+            .projects-table td:first-child {
+                font-weight: bold;
+                padding-top: 1.25rem !important;
+                width: auto;
+            }
+
+            .projects-table td:last-child {
+                padding-bottom: 1.25rem !important;
+                border-bottom: 1px solid var(--border-color);
+                margin-bottom: 0.5rem;
             }
             
             .resume-container {
@@ -334,19 +363,22 @@
                         <h3>Experience</h3>
                         <div class="resume-item">
                             <span class="resume-item-title">Glover Hinton</span>
+                            <span class="resume-item-subtitle">Creative technology agency</span>
                             <span class="resume-item-subtitle">Co-founder</span>
                             <span class="resume-item-date">2025–present</span>
                         </div>
                         
                         <div class="resume-item">
                             <span class="resume-item-title">Young Orchard</span>
+                            <span class="resume-item-subtitle">Independent investment fund</span>
                             <span class="resume-item-subtitle">Co-Chief Investment Officer</span>
                             <span class="resume-item-date">2018–2023</span>
                         </div>
                         
                         <div class="resume-item">
                             <span class="resume-item-title">The Range</span>
-                            <span class="resume-item-subtitle">Electronic music artist</span>
+                            <span class="resume-item-subtitle">Electronic music project</span>
+                            <span class="resume-item-subtitle">Artist</span>
                             <span class="resume-item-date">2011–present</span>
                         </div>
                     </div>
