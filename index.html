@@ -8,7 +8,7 @@
         :root {
             --primary-color: #1a1a1a; /* Deep matte black */
             --background-color: #f0e9dc; /* Vellum beige */
-            --text-color: #1a1a1a;
+            --text-color: #333333;
             --light-gray: #e8e0cf;
             --border-color: #d8ceb9;
         }
@@ -19,9 +19,18 @@
             box-sizing: border-box;
         }
         
+        /* Global text size overrides */
+        body, h1, h2, h3, h4, h5, h6, p, span, a, div, li, td, th, label, input, 
+        button, textarea, select, option, blockquote, figcaption, 
+        .projects-table td, .resume-item-title, .resume-item-subtitle, 
+        .resume-item-date, .header-links {
+            font-size: 20px !important;
+        }
+        
         body {
             font-family: "Times New Roman", Times, serif;
             line-height: 1.6;
+            letter-spacing: -0.3px;
             color: var(--text-color);
             background-color: var(--background-color);
             padding: 0 1.5rem;
@@ -34,27 +43,23 @@
         }
         
         header {
-            text-align: center;
+            text-align: left;
             margin-bottom: 5rem;
         }
         
         h1 {
-            font-size: 2.5rem;
             font-weight: normal;
             margin-bottom: 1.5rem;
+            color: #717171;
         }
         
         header p {
-            font-size: 1.2rem;
             line-height: 1.5;
             margin-bottom: 1rem;
             max-width: 36rem;
-            margin-left: auto;
-            margin-right: auto;
         }
         
         .header-links {
-            font-size: 1rem;
             margin-top: 1rem;
         }
         
@@ -63,15 +68,32 @@
         }
         
         h2 {
-            font-size: 1.5rem;
             font-weight: normal;
             margin-bottom: 2rem;
+            color:#717171;
+        }
+
+        h3 {
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color:#717171;
         }
         
         a {
             color: var(--text-color);
             text-decoration: none;
             transition: opacity 0.3s;
+            position: relative;
+        }
+        
+        a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3%;
+            bottom: -22%;
+            left: 0;
+            background-color: #717171;
         }
         
         a:hover {
@@ -117,7 +139,6 @@
         
         /* Contact styles */
         .contact p {
-            font-size: 1.1rem;
             line-height: 1.6;
         }
         
@@ -143,7 +164,6 @@
         }
         
         .resume-block h3 {
-            font-size: 1.3rem;
             font-weight: normal;
             margin-bottom: 1.5rem;
         }
@@ -153,7 +173,7 @@
         }
         
         .resume-item-title {
-            font-weight: bold;
+            font-weight: normal;
             display: block;
         }
         
@@ -166,16 +186,13 @@
             margin-bottom: 0.5rem;
         }
         
-        .press-item {
-            margin-bottom: 0.5rem;
+        /* Press items now use resume-item class for consistency */
+
+        .wip{
+            opacity: 25%;
         }
         
-        .resume-dot {
-            position: absolute;
-            right: calc(50% - 100px);
-            margin-top: -50px;
-            font-size: 1.5rem;
-        }
+        /* Removed resume-dot styles */
         
         /* Responsive styles */
         @media (max-width: 768px) {
@@ -187,9 +204,7 @@
                 margin-bottom: 3rem;
             }
             
-            h1 {
-                font-size: 2rem;
-            }
+            /* h1 font size is controlled by global override */
             
             section {
                 margin-bottom: 3rem;
@@ -208,9 +223,7 @@
                 gap: 2rem;
             }
             
-            .resume-dot {
-                right: 25%;
-            }
+            /* Removed resume-dot responsive styles */
         }
         
         @media (max-width: 480px) {
@@ -230,7 +243,7 @@
             <h1>James Hinton</h1>
             <p>Musician and creative technologist based between New York and Vermont</p>
             <div class="header-links">
-                <a href="#otherwise">More</a> • <a href="#resume">Resume</a>
+                <a href="#engineering">More</a>
             </div>
         </header>
         
@@ -243,7 +256,7 @@
                             <td>2025</td>
                             <td>Auteur</td>
                             <td>LLM-based generative music app</td>
-                            <td><a href="#">WIP</a></td>
+                            <td><div class="wip">WIP</div></td>
                         </tr>
                         <tr>
                             <td>2025</td>
@@ -259,7 +272,7 @@
                         </tr>
                         <tr>
                             <td>2017</td>
-                            <td>Twitter Lobby Installation</td>
+                            <td>Twitter Headquarters Installation</td>
                             <td>Audio-visual installation</td>
                             <td></td>
                         </tr>
@@ -286,12 +299,11 @@
             </div>
         </section>
         
-        <section>
+        <section id="engineering">
             <h2>Engineering</h2>
             <div class="content">
                 <p>As Partner & Co-founder of Glover Hinton, I specialize in multidisciplinary projects requiring rapid execution across music, design, and technology. We work with clients who need nimble teams that can navigate complex problems where larger teams would be inefficient.</p>
-                <p>Currently, I'm developing Auteur, an LLM-based generative music application for municipalities. This project combines my technical development skills in Python and machine learning with my musical composition expertise to create generative music experiences with integrated reporting capabilities.</p>
-                <p>A real-time audio-visual installation representing global Twitter activity as sound and light. I developed a system that translated tweet patterns into musical elements, creating an evolving soundscape that responded organically to human communication patterns across the platform.</p>
+                <p>Currently, we are developing Auteur, an LLM-based generative ambient music application for municipalities. This project combines my technical development skills in Python and machine learning with my musical composition to create generative music experiences with integrated reporting capabilities.</p>
             </div>
         </section>
         
@@ -299,28 +311,26 @@
             <h2>Music</h2>
             <div class="content">
                 <p>As The Range, I create electronic music that explores the intersection of technology and human connection. I've released four albums, including two on Domino Recordings ("Potential" in 2016 and "Mercury" in 2022), toured globally, and accumulated over 25 million streams across platforms.</p>
-                <p>What makes my work distinctive, I think, is my sampling approach. For "Potential," I combed through hundreds of hours of YouTube videos to find unknown artists with fewer than 1,000 views, whose voices resonated with something authentic and unpolished. This process evolved from simply preferring how these raw vocals worked with my synthesizers into something much more meaningful - a way to showcase incredible talent that algorithms might never surface. This led to "Superimpose," a documentary where we actually met these artists and explored their stories.</p>
-                <p>I recently collaborated with Google DeepMind on a musical piece using their Music AI technology. Working directly with their Sandbox platform showed me some genuinely fascinating possibilities in how AI can function as a creative partner while still keeping human expression at the center of the process.</p>
+                <p>What makes my work distinctive, I think, is my sampling approach. For "Potential," I combed through hundreds of hours of YouTube videos to find unknown artists with fewer than 1,000 views, whose voices resonated with something authentic and unpolished. This process evolved from simply preferring how these raw vocals worked with my synthesizers into something much more meaningful - a way to showcase incredible talent that algorithms might never surface. In order to showcase the people on the album we made "Superimpose," a documentary where we actually met these artists and explored their stories.</p>
             </div>
         </section>
         
         <section id="otherwise">
             <h2>Otherwise</h2>
             <div class="content">
-                <p>My background spans diverse fields, including a Bachelor's degree in Physics from Brown University (2010) and experience as Co-Chief Investment Officer at Young Orchard (2018-2023), where I helped achieve 136% returns over a five-year period through value investing strategies. My approach to creativity involves recombining existing ideas in unexpected ways and immersing myself in unfamiliar contexts to gain new perspectives. I'm passionate about creating experiences that help people understand complex systems and express themselves in new ways.</p>
+                <p>My background spans diverse fields, including a Bachelor's degree in Physics from Brown University (2010) and experience as Co-Chief Investment Officer at Young Orchard (2018-2023), where I helped achieve 136% returns over a five-year period through value investing strategies. My approach to creativity involves recombining existing ideas in unexpected ways and I'm passionate about creating experiences that help people understand complex systems through my work. </p>
             </div>
         </section>
         
         <section class="contact">
             <h2>Contact</h2>
-            <p>You can reach me directly at james.c.hinton@gmail.com for collaboration opportunities or questions about my work and you can find my music on <a href="https://open.spotify.com/artist/5xsSdtWHooM9IL5WnDWTdD?si=d5-8oMfcSq6lE13xrOfaLg" target="_blank">Spotify</a>.</p>
+            <p>You can reach me directly at <a href="mailto:james.c.hinton@gmail.com">james.c.hinton@gmail.com</a> for collaboration opportunities or questions about my work and you can find my music on <a href="https://open.spotify.com/artist/5xsSdtWHooM9IL5WnDWTdD?si=d5-8oMfcSq6lE13xrOfaLg" target="_blank">Spotify</a>.</p>
         </section>
         
         <section id="resume" class="resume-section">
-            <h2>Resume</h2>
             <div class="resume-container">
                 <div class="resume-column">
-                    <div class="resume-block">
+                    <div id="experience" class="resume-block">
                         <h3>Experience</h3>
                         <div class="resume-item">
                             <span class="resume-item-title">Glover Hinton</span>
@@ -355,28 +365,23 @@
                     <div class="resume-block">
                         <h3>Teaching and workshops</h3>
                         <div class="resume-item">
-                            <span class="resume-item-title">Summer at Sign, Brown University</span>
-                            <span class="resume-item-subtitle">Electronic Music Production</span>
+                            <span class="resume-item-title">Summer@Brown</span>
+                            <span class="resume-item-subtitle">Teacher, Electronic Music Production</span>
                             <span class="resume-item-date">2012, 2013</span>
                         </div>
                     </div>
                     
                     <div class="resume-block">
                         <h3>Awards + Press</h3>
-                        <div class="press-item">
-                            <span>Pitchfork</span>
-                        </div>
-                        <div class="press-item">
-                            <span>NYTimes</span>
-                        </div>
-                        <div class="press-item">
-                            <span>The Verge</span>
+                        <div class="resume-item">
+                            <span class="resume-item-title">Pitchfork</span>
+                            <span class="resume-item-title">NYTimes</span>
+                            <span class="resume-item-title">The Verge</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="resume-dot">•</div>
         </section>
     </div>
 </body>
